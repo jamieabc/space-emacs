@@ -1,11 +1,12 @@
-(defvar display/fira-code-font-lock-keywords-alist
+(defconst display/fira-code-font-lock-keywords-alist
   (mapcar (lambda (regex-char-pair)
             `(,(car regex-char-pair)
               (0 (prog1 ()
                    (compose-region (match-beginning 1)
                                    (match-end 1)
+                                   ;; The first argument to concat is a string containing a literal tab
                                    ,(concat "	" (list (decode-char 'ucs (cadr regex-char-pair)))))))))
-                    '(("\\(www\\)"                   #Xe100)
+          '(("\\(www\\)"                   #Xe100)
             ("[^/]\\(\\*\\*\\)[^/]"        #Xe101)
             ("\\(\\*\\*\\*\\)"             #Xe102)
             ("\\(\\*\\*/\\)"               #Xe103)
@@ -115,5 +116,4 @@
             ;; ("\\(x\\)"                   #Xe16b) This ended up being hard to do properly so i'm leaving it out.
             ("[^:=]\\(:\\)[^:=]"           #Xe16c)
             ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
-            ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))
-          ))
+            ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
