@@ -3,10 +3,8 @@
                         "*.lock" "*.sh" "*.java" "*.example" "*.txt" "*.el" "*.hdl" "*.tst" "*.cmp"
                         "*.erb" "*.php" "*.m" "*.conf" "*.go" "*"
                         )
-  "Searchable file types."
-  )
+  "Searchable file types.")
 
 (defvar ffip-prune-patterns '(
                               "*/.git/*" "*/node_modules/*" "*/dist/*"
-                              )
-  )
+                              ))
