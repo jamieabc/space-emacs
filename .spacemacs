@@ -32,6 +32,23 @@ values."
    dotspacemacs-configuration-layers
    '(
      go
+     ruby
+     javascript
+     shell-scripts
+     typescript
+     html
+     emacs-lisp
+     markdown
+     python
+     lua
+     wakatime
+     yaml
+     dash
+     fasd
+     pandoc
+     shell
+     search-engine
+     spotify
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -40,9 +57,7 @@ values."
      ivy
      auto-completion
      ;; better-defaults
-     emacs-lisp
      git
-     markdown
      org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -52,6 +67,7 @@ values."
      version-control
      find-file
      display
+     my-org
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -107,13 +123,11 @@ values."
    dotspacemacs-editing-style '(vim
                                 (define-key evil-normal-state-map (kdb "SPC j j") 'avy-goto-char-timer)
                                 (define-key evil-normal-state-map (kbd "SPC j J") 'avy-goto-char)
-                                (define-key evil-insert-state-map (kbd "C-;") 'comment-dwim)
-                                (define-key evil-insert-state-map (kbd "C-n") 'next-line)
-                                (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
-                                (define-key evil-insert-state-map (kbd "C-a") 'move-beginning-of-line)
-                                (define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line)
-                                (define-key evil-insert-state-map (kbd "C-y") 'yank)
-                                (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
+                                (define-key evil-insert-state-local-map (kbd "C-;") 'evilnc-comment-operator)
+                                (define-key evil-insert-state-map (kbd "C-a") 'evil-beginning-of-line)
+                                (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line)
+                                (define-key evil-insert-state-local-map (kbd "C-y") 'evil-yank)
+                                (define-key evil-insert-state-local-map (kbd "C-d") 'evil-delete-char)
                                 (define-key evil-insert-state-map (kbd "C-f") 'forward-char)
                                 (define-key evil-insert-state-map (kbd "C-b") 'backward-char))
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
@@ -273,7 +287,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -333,9 +347,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-directory "~/.emacs.d/org/")
  '(package-selected-packages
    (quote
-    (prettify-utils pretty-mode solarized-theme go-guru go-eldoc company-go go-mode smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck find-file-in-project evil-magit magit magit-popup git-commit ghub treepy graphql with-editor diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))))
+    (engine-mode lua-mode yaml-mode xterm-color spotify shell-pop pandoc-mode ox-pandoc ht multi-term fasd eshell-z eshell-prompt-extras esh-help dash-at-point counsel-dash helm-dash org-beautify-theme ob-http ob-go yapfify web-mode web-beautify wakatime-mode tide typescript-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements minitest livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc insert-shebang hy-mode haml-mode fish-mode emmet-mode cython-mode company-web web-completion-data company-tern dash-functional tern company-shell company-anaconda coffee-mode chruby bundler inf-ruby anaconda-mode pythonic prettify-utils pretty-mode solarized-theme go-guru go-eldoc company-go go-mode smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck find-file-in-project evil-magit magit magit-popup git-commit ghub treepy graphql with-editor diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
