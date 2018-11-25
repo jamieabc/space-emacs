@@ -1,119 +1,151 @@
-(defconst display/fira-code-font-lock-keywords-alist
-  (mapcar (lambda (regex-char-pair)
-            `(,(car regex-char-pair)
-              (0 (prog1 ()
-                   (compose-region (match-beginning 1)
-                                   (match-end 1)
-                                   ;; The first argument to concat is a string containing a literal tab
-                                   ,(concat "	" (list (decode-char 'ucs (cadr regex-char-pair)))))))))
-          '(("\\(www\\)"                   #Xe100)
-            ("[^/]\\(\\*\\*\\)[^/]"        #Xe101)
-            ("\\(\\*\\*\\*\\)"             #Xe102)
-            ("\\(\\*\\*/\\)"               #Xe103)
-            ("\\(\\*>\\)"                  #Xe104)
-            ("[^*]\\(\\*/\\)"              #Xe105)
-            ("\\(\\\\\\\\\\)"              #Xe106)
-            ("\\(\\\\\\\\\\\\\\)"          #Xe107)
-            ("\\({-\\)"                    #Xe108)
-            ("\\(\\[\\]\\)"                #Xe109)
-            ("\\(::\\)"                    #Xe10a)
-            ("\\(:::\\)"                   #Xe10b)
-            ("[^=]\\(:=\\)"                #Xe10c)
-            ("\\(!!\\)"                    #Xe10d)
-            ("\\(!=\\)"                    #Xe10e)
-            ("\\(!==\\)"                   #Xe10f)
-            ("\\(-}\\)"                    #Xe110)
-            ("\\(--\\)"                    #Xe111)
-            ("\\(---\\)"                   #Xe112)
-            ("\\(-->\\)"                   #Xe113)
-            ("[^-]\\(->\\)"                #Xe114)
-            ("\\(->>\\)"                   #Xe115)
-            ("\\(-<\\)"                    #Xe116)
-            ("\\(-<<\\)"                   #Xe117)
-            ("\\(-~\\)"                    #Xe118)
-            ("\\(#{\\)"                    #Xe119)
-            ("\\(#\\[\\)"                  #Xe11a)
-            ("\\(##\\)"                    #Xe11b)
-            ("\\(###\\)"                   #Xe11c)
-            ("\\(####\\)"                  #Xe11d)
-            ("\\(#(\\)"                    #Xe11e)
-            ("\\(#\\?\\)"                  #Xe11f)
-            ("\\(#_\\)"                    #Xe120)
-            ("\\(#_(\\)"                   #Xe121)
-            ("\\(\\.-\\)"                  #Xe122)
-            ("\\(\\.=\\)"                  #Xe123)
-            ("\\(\\.\\.\\)"                #Xe124)
-            ("\\(\\.\\.<\\)"               #Xe125)
-            ("\\(\\.\\.\\.\\)"             #Xe126)
-            ("\\(\\?=\\)"                  #Xe127)
-            ("\\(\\?\\?\\)"                #Xe128)
-            ("\\(;;\\)"                    #Xe129)
-            ("\\(/\\*\\)"                  #Xe12a)
-            ("\\(/\\*\\*\\)"               #Xe12b)
-            ("\\(/=\\)"                    #Xe12c)
-            ("\\(/==\\)"                   #Xe12d)
-            ("\\(/>\\)"                    #Xe12e)
-            ("\\(//\\)"                    #Xe12f)
-            ("\\(///\\)"                   #Xe130)
-            ("\\(&&\\)"                    #Xe131)
-            ("\\(||\\)"                    #Xe132)
-            ("\\(||=\\)"                   #Xe133)
-            ("[^|]\\(|=\\)"                #Xe134)
-            ("\\(|>\\)"                    #Xe135)
-            ("\\(\\^=\\)"                  #Xe136)
-            ("\\(\\$>\\)"                  #Xe137)
-            ("\\(\\+\\+\\)"                #Xe138)
-            ("\\(\\+\\+\\+\\)"             #Xe139)
-            ("\\(\\+>\\)"                  #Xe13a)
-            ("\\(=:=\\)"                   #Xe13b)
-            ("[^!/]\\(==\\)[^>]"           #Xe13c)
-            ("\\(===\\)"                   #Xe13d)
-            ("\\(==>\\)"                   #Xe13e)
-            ("[^=]\\(=>\\)"                #Xe13f)
-            ("\\(=>>\\)"                   #Xe140)
-            ("\\(<=\\)"                    #Xe141)
-            ("\\(=<<\\)"                   #Xe142)
-            ("\\(=/=\\)"                   #Xe143)
-            ("\\(>-\\)"                    #Xe144)
-            ("\\(>=\\)"                    #Xe145)
-            ("\\(>=>\\)"                   #Xe146)
-            ("[^-=]\\(>>\\)"               #Xe147)
-            ("\\(>>-\\)"                   #Xe148)
-            ("\\(>>=\\)"                   #Xe149)
-            ("\\(>>>\\)"                   #Xe14a)
-            ("\\(<\\*\\)"                  #Xe14b)
-            ("\\(<\\*>\\)"                 #Xe14c)
-            ("\\(<|\\)"                    #Xe14d)
-            ("\\(<|>\\)"                   #Xe14e)
-            ("\\(<\\$\\)"                  #Xe14f)
-            ("\\(<\\$>\\)"                 #Xe150)
-            ("\\(<!--\\)"                  #Xe151)
-            ("\\(<-\\)"                    #Xe152)
-            ("\\(<--\\)"                   #Xe153)
-            ("\\(<->\\)"                   #Xe154)
-            ("\\(<\\+\\)"                  #Xe155)
-            ("\\(<\\+>\\)"                 #Xe156)
-            ("\\(<=\\)"                    #Xe157)
-            ("\\(<==\\)"                   #Xe158)
-            ("\\(<=>\\)"                   #Xe159)
-            ("\\(<=<\\)"                   #Xe15a)
-            ("\\(<>\\)"                    #Xe15b)
-            ("[^-=]\\(<<\\)"               #Xe15c)
-            ("\\(<<-\\)"                   #Xe15d)
-            ("\\(<<=\\)"                   #Xe15e)
-            ("\\(<<<\\)"                   #Xe15f)
-            ("\\(<~\\)"                    #Xe160)
-            ("\\(<~~\\)"                   #Xe161)
-            ("\\(</\\)"                    #Xe162)
-            ("\\(</>\\)"                   #Xe163)
-            ("\\(~@\\)"                    #Xe164)
-            ("\\(~-\\)"                    #Xe165)
-            ("\\(~=\\)"                    #Xe166)
-            ("\\(~>\\)"                    #Xe167)
-            ("[^<]\\(~~\\)"                #Xe168)
-            ("\\(~~>\\)"                   #Xe169)
-            ("\\(%%\\)"                    #Xe16a)
-            ;; ("\\(x\\)"                   #Xe16b) This ended up being hard to do properly so i'm leaving it out.
-            ("[^:=]\\(:\\)[^:=]"           #Xe16c)
-            ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
-            ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
+(setq solarized-use-variable-pitch nil)
+(setq face-remapping-alist '(;; Headers - outlines match org
+                             (outline-1 org-level-1)
+                             (outline-2 org-level-2)
+                             (outline-3 org-level-3)
+
+                             ;; Modeline - invis. active, monochrome inactive
+                             (powerline-active1        mode-line)
+                             (powerline-active2        mode-line)
+                             (spaceline-highlight-face mode-line)
+
+                             (powerline-active0        mode-line)
+                             (mode-line-active         mode-line)
+                             (mode-line-inactive       mode-line)
+                             (powerline-inactive0      mode-line)
+                             (powerline-inactive1      mode-line)
+                             (powerline-inactive2      mode-line)
+                             ))
+
+;;;; Styling
+;;;;; Headers
+
+(setq display/headers/common '(:underline t :inherit nil))
+(setq display/headers/zenburn
+      `((org-level-1
+         ,@display/headers/common
+         :height 1.35
+         :foreground "#DFAF8F")
+        (org-level-2
+         ,@display/headers/common
+         :height 1.25
+         :foreground "#BFEBBF")
+        (org-level-3
+         ,@display/headers/common
+         :height 1.15
+         :foreground "#7CB8BB")))
+(setq display/headers/solarized-light
+      `((org-level-1
+         ,@display/headers/common
+         :height 1.35
+         :foreground "#a71d31")
+        (org-level-2
+         ,@display/headers/common
+         :height 1.25
+         :foreground "#8D6B94")
+        (org-level-3
+         ,@display/headers/common
+         :height 1.15)))
+
+;;;;; Org-blocks
+
+(setq display/org-blocks/common '(:italic nil :underline nil :box t))
+(setq display/org-blocks
+      `((org-block-begin-line
+         ,@display/org-blocks/common)
+        (org-block-end-line
+         ,@display/org-blocks/common)))
+
+;;;;; Company
+
+(setq display/company/common '(:weight bold :underline nil))
+(setq display/company
+      `((company-tooltip-common
+         ,@display/company/common
+         :inherit company-tooltip)
+        (company-tooltip-common-selection
+         ,@display/company/common
+         :inherit company-tooltip-selection)))
+
+;;;;; Mode-line
+
+(setq display/mode-line/common '(:box nil :underline nil))
+(setq display/mode-line
+      `((mode-line
+         ,@display/mode-line/common
+         :background nil)
+        (mode-line-inactive
+         ,@display/mode-line/common)))
+
+;;;;; Font-locks
+
+(setq display/font-locks
+      `((font-lock-comment-face
+         :italic t
+         :weight normal)
+        (font-lock-doc-face
+         :italic t
+         :weight normal)))
+
+;;; Theming
+;;;; Common
+
+(setq display/common-theming
+      `(,@display/company
+        ,@display/mode-line
+        ,@display/org-blocks
+
+        (avy-background-face :italic nil)
+        (fringe :background nil)))
+
+;;;; Themes
+
+(setq display/solarized-light-theming
+      `(;; Overwrites
+        (mode-line-inactive :background "#eee8d5"
+                            ,@(alist-get 'mode-line-inactive
+                                         display/mode-line))
+
+        (font-lock-comment-face :foreground "#586e75"
+                                ,@(alist-get 'font-lock-comment-face
+                                             display/font-locks))
+        (font-lock-doc-face :foreground "#2aa198"
+                            ,@(alist-get 'font-lock-doc-face
+                                         display/font-locks))
+
+        ;; Extra
+        (sp-show-pair-match-face :background  "CadetBlue3")
+        (auto-dim-other-buffers-face :background "#fcf4df")
+
+        ;; ... Experiments ...
+        ))
+
+(setq display/zenburn-theming
+      `(;; Overwrites
+        (font-lock-comment-face :foreground "gray50"
+                                ,@(alist-get 'font-lock-comment-face
+                                             display/font-locks))
+        (font-lock-doc-face :foreground "gray65"
+                            ,@(alist-get 'font-lock-doc-face
+                                         display/font-locks))
+
+        ;; Extra
+        (font-lock-comment-delimiter-face :foreground "gray35")
+        (font-lock-function-name-face     :foreground "CadetBlue2")
+        (font-lock-type-face              :foreground "LightCoral")
+        (auto-dim-other-buffers-face      :background "gray22")
+
+        ;; ... Experiments ...
+        ))
+
+;;;; Set Modifications
+
+;; This variable is the only `theming' layer requirement to enable our theming
+
+(setq theming-modifications
+      `((zenburn         ,@display/common-theming
+                         ,@display/headers/zenburn
+                         ,@display/zenburn-theming)
+        (solarized-light ,@display/common-theming
+                         ,@display/headers/solarized-light
+                         ,@display/solarized-light-theming)))

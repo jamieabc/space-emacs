@@ -8,7 +8,7 @@
                                       :repo "Ilazki/prettify-utils.el"))
 
     (pretty-code :location local)
-    (fira-code :location local)
+    (pretty-fonts :location local)
     ))
 
 (defun display/init-pretty-mode ()
@@ -21,7 +21,8 @@
                    :arrows :arrows-twoheaded :punctuation
                    :logic :sets))
       (pretty-activate-groups
-       '(:greek)))))
+       '(:greek :sub-and-superscripts :arithmetic-nary))))
+  )
 
 (defun display/init-solarized-theme ()
   (use-package solarized-theme))
@@ -39,11 +40,33 @@
       (pretty-code-add-hook 'python-mode-hook '((:def "def")
                                                 (:lambda "lambda"))))))
 
-(defun display/init-fira-code ()
-  (use-package fira-code
+(defun display/init-pretty-fonts ()
+  (use-package pretty-fonts
     :config
-    (progn
-      (fira-code-add-hook 'prog-mode-hook)))
-  )
+    (spacemacs|do-after-display-system-init
+     (pretty-fonts-add-hook 'prog-mode-hook pretty-fonts-fira-code-alist)
+     (pretty-fonts-add-hook 'org-mode-hook pretty-fonts-fira-code-alist)
+
+     (pretty-fonts-set-fontsets-for-fira-code)
+     (pretty-fonts-set-fontsets
+      '(;; All-the-icons fontsets
+        ("fontawesome"
+         ;;                         
+         #xf07c #xf0c9 #xf0c4 #xf0cb #xf017 #xf101)
+
+        ("all-the-icons"
+         ;;    
+         #xe907 #xe928)
+
+        ("github-octicons"
+         ;;                               
+         #xf091 #xf059 #xf076 #xf075 #xe192  #xf016 #xf071)
+
+        ("material icons"
+         ;;              
+         #xe871 #xe918 #xe3e7  #xe5da
+         ;;              
+         #xe3d0 #xe3d1 #xe3d2 #xe3d4)))
+     )))
 
 ;;; packages.el ends here
