@@ -8,6 +8,7 @@
                                       :repo "Ilazki/prettify-utils.el"))
 
     (pretty-code :location local)
+    (fira-code :location local)
     ))
 
 (defun display/init-pretty-mode ()
@@ -38,9 +39,11 @@
       (pretty-code-add-hook 'python-mode-hook '((:def "def")
                                                 (:lambda "lambda"))))))
 
-;; (defun display/post-init-solarized-theme ()
-;;   (when (configuration-layer/package-usedp 'solarized-theme)
-;;     (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
-;;     (font-lock-add-keywords nil display/fira-code-font-lock-keywords-alist)))
+(defun display/init-fira-code ()
+  (use-package fira-code
+    :config
+    (progn
+      (fira-code-add-hook 'prog-mode-hook)))
+  )
 
 ;;; packages.el ends here
