@@ -1,0 +1,31 @@
+* Sprint Meeting
+** Estimation is hard
+
+   Engineer is always optimistic.
+
+** Estimate in unit but not hour
+
+   Hour is hard and different for everyone, some works 8 hours a day
+   and some works 12 hours a day. But half day work is same
+   to everyone, it makes no bias on that.
+
+** Good estimation is around 70%
+
+   When professional enginner does something not familiar, the
+   accuracy of estimation should be around 70%. That's also the reason why
+   do team estimation.
+
+* E2E Test
+** Difference between unit test & e2e test
+   If a behavior exist only within component, then it should be a unit test.
+
+   take `app.e2e.ts` as an example
+
+#+BEGIN_SRC typescript
+it('Has title', async () => {});
+it('Has header', async () => {});
+#+END_SRC
+
+   The `title` and `header` is nothing to do with backend data, so
+   these two tests should be writter in unit test. So it will be much
+   faster and convenient.
