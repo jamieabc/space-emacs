@@ -121,13 +121,6 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style '(vim
-                                (define-key evil-normal-state-map (kdb "SPC j j") 'avy-goto-char-timer)
-                                (define-key evil-normal-state-map (kbd "SPC j J") 'avy-goto-char)
-                                (define-key evil-insert-state-local-map (kbd "C-;") 'evilnc-comment-operator)
-                                (define-key evil-insert-state-map (kbd "C-a") 'evil-beginning-of-line)
-                                (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line)
-                                (define-key evil-insert-state-local-map (kbd "C-y") 'evil-yank)
-                                (define-key evil-insert-state-local-map (kbd "C-d") 'evil-delete-char)
                                 (define-key evil-insert-state-map (kbd "C-f") 'forward-char)
                                 (define-key evil-insert-state-map (kbd "C-b") 'backward-char))
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
@@ -338,10 +331,27 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq scroll-step 1)
+  ;; setup mac keys
   (if (spacemacs/system-is-mac)
        (setq mac-command-modifier 'meta
              mac-option-modifier 'super
              ns-function-modifier 'control))
+
+  ;; key bindings normal mode
+  (define-key evil-normal-state-map (kbd "SPC j j") 'avy-goto-char-timer)
+  (define-key evil-normal-state-map (kbd "SPC i c") 'evilnc-comment-or-uncomment-lines)
+  (define-key evil-normal-state-map (kbd "SPC i r") 'comment-or-uncomment-region)
+  (define-key evil-normal-state-map (kbd "SPC i v") 'evilnc-toggle-invert-comment-line-by-line)
+  (define-key evil-normal-state-map (kbd "f z") 'zap-to-char)
+  (define-key evil-normal-state-map (kbd "f s") 'delete-horizontal-space)
+
+  ;; key bindings insert mode
+  (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
+  (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
+  (define-key evil-insert-state-map (kbd "C-y") 'yank)
+  (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
+  (define-key evil-insert-state-map (kbd "C-;") 'comment-dwim)
+  (define-key evil-insert-state-map (kbd "C-\\") 'delete-horizontal-space)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
