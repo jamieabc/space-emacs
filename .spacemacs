@@ -352,6 +352,12 @@ you should place your code here."
   (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
   (define-key evil-insert-state-map (kbd "C-;") 'comment-dwim)
   (define-key evil-insert-state-map (kbd "C-\\") 'delete-horizontal-space)
+
+  ;; magit
+  (eval-after-load 'magit
+    '(progn
+       (define-key magit-log-mode-map (kbd "C-c C-w") 'magit-copy-section-value)
+       ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
