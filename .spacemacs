@@ -344,6 +344,8 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "SPC i v") 'evilnc-toggle-invert-comment-line-by-line)
   (define-key evil-normal-state-map (kbd "f z") 'zap-to-char)
   (define-key evil-normal-state-map (kbd "f s") 'delete-horizontal-space)
+  (define-key evil-normal-state-map (kbd "f g") 'counsel-ag)
+  (define-key evil-normal-state-map (kbd "C-\\") 'delete-horizontal-space)
 
   ;; key bindings insert mode
   (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
@@ -358,6 +360,11 @@ you should place your code here."
     '(progn
        (define-key magit-log-mode-map (kbd "C-c C-w") 'magit-copy-section-value)
        ))
+
+  ;; ag
+  (if (spacemacs/system-is-mac)
+      (setq-default counsel-ag-base-command
+                    "/usr/local/bin/ag --vimgrep --nocolor --nogroup %s"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
