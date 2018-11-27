@@ -10,8 +10,8 @@
     :defer t
     :config
     (progn
-      (keyfreq-mode t)
-      (keyfreq-autosave-mode t)))
+      (keyfreq-mode 1)
+      (keyfreq-autosave-mode 1)))
   )
 
 (defun my-edit/init-reveal-in-osx-finder ()
