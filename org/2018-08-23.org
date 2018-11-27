@@ -1,0 +1,108 @@
+* XCUI test
+** Error message of 'Library not loaded'
+
+   Library not loaded: @rpath/BigInt.framework/BigInt
+
+*** Add new pod description
+
+    #+BEGIN_SRC ruby
+      target 'Bitmark Registry dev e2e' do
+        use_frameworks!
+
+        pods
+        pod 'HockeySDK'
+      end
+    #+END_SRC
+*** Install cocoapods
+
+    #+BEGIN_SRC shell
+    gem install cocoapods
+    pod install
+    #+END_SRC
+** Get elements
+
+   #+BEGIN_SRC ruby
+   let app = XCUIApplication()
+   app.otherElements["WelcomeComponent.accessExistingAccount"].tap()
+   #+END_SRC
+** Get all elements
+
+   stop program by placing a breakpoint, in the debug console (cmd +
+   shift + y)
+
+   #+BEGIN_SRC ruby
+   po XCUIApplication().debugDescription
+   #+END_SRC
+** Not accessible by testID
+
+   [[https://github.com/GeekyAnts/NativeBase/issues/1230][XCUITest fail to access testID]]
+** Click position
+
+   #+BEGIN_SRC ruby
+   let app = XCUIApplication()
+   let webView = app.webViews.element
+   let coordinate = webView.coordinateWithNormalizedOffset(CGVector(dx: 10, dy: 10))
+   coordinate.tap()
+   #+END_SRC
+** Click coordinates
+
+   #+BEGIN_SRC ruby
+     func tapCoordinate(x: Double, y: Double) {
+       let app = XCUIApplication()
+       let normalized = app.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+       let coordinate = normalized.withOffset(CGVector(dx: x, dy: y))
+       coordinate.tap()
+     }
+
+     func testExample1() {
+       let app = XCUIApplication()
+       app.otherElements["WelcomeComponent.accessExistingAccount"].tap()
+       tapCoordinate(x: 100, y: 100)
+       print("hihi")
+     }
+   #+END_SRC
+** Show element test ID
+
+   for component `TouchableWithoutFeedback`, add props of `accessible={false}`
+** Delete App after create account
+
+   [[https://stackoverflow.com/questions/33107731/is-there-a-way-to-reset-the-app-between-tests-in-swift-xctest-ui][delete app]]
+
+   #+BEGIN_SRC ruby
+     func deleteApp() {
+       XCUIApplication().terminate()
+
+       // Resolve the query for the springboard rather than launching it
+                             target.resolve()
+
+                             // Force delete the app from the springboard
+                             let icon = springboard.icons["BitmarkRegistry"]
+                             if icon.exists {
+                                  let iconFrame = icon.frame
+                                  let springboardFrame = springboard.frame
+                                  icon.pressForDuration(1.3)
+
+                                  // Tap the little "X" button at approximately where it is. The X is not exposed directly
+                                  springboard.coordinateWithNormalizedOffset(CGVectorMake((iconFrame.minX + 3) / springboardFrame.maxX, (iconFrame.minY + 3) / springboardFrame.maxY)).tap()
+
+                                  springboard.alerts.buttons["Delete"].tap()
+
+                                  // Press home once make the icons stop wiggling
+                                  XCUIDevice.sharedDevice().pressButton(.Home)
+                                  // Press home again to go to the first page of the springboard
+                                  XCUIDevice.sharedDevice().pressButton(.Home)
+                                  // Wait some time for the animation end
+                                  NSThread.sleepForTimeInterval(0.5)
+
+                                  let settingsIcon = springboard.icons["Settings"]
+                                  if settingsIcon.exists {
+                                       settingsIcon.tap()
+                                       settings.tables.staticTexts["General"].tap()
+                                       settings.tables.staticTexts["Reset"].tap()
+                                       settings.tables.staticTexts["Reset Location & Privacy"].tap()
+                                       settings.buttons["Reset Warnings"].tap()
+                                       settings.terminate()
+                                     }
+                                }
+     }
+   #+END_SRC

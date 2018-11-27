@@ -1,0 +1,46 @@
+* Cowbuilder
+** Environment
+
+   #+BEGIN_SRC shell
+     sudo apt install cowbuilder
+   #+END_SRC
+* Jenkins
+** Run test in worksapce
+** Show coverage
+
+   Install coverage converting tool and convert to xml from [[https://stackoverflow.com/questions/31413281/golang-coverprofile-output-format][here]]
+
+   #+BEGIN_SRC shell
+     go get github.com/axw/gocov/gocov
+     go get github.com/AlekSi/gocov-xml
+
+     go test -coverprofile=cover.out
+     gocov convert cover.out | gocov-xml > coverage.xml
+   #+END_SRC
+** Pipeline
+
+   #+BEGIN_SRC groovy
+     node (label: 'aws-builder') {
+         ws("${WORKSPACE}/builds/${BUILD_ID}") {
+             withEnv(["GOPATH=${WORKSPACE}", "GOROOT=/usr/lib/go", "repo=src/github.com/bitmark-inc"]) {
+                 env.PATH="${GOROOT}/bin:$PATH"
+
+                 stage('Checkout') {
+                     echo 'Checking out from repository'
+                     sh 'cd ${WORKSPACE} && mkdir -p \$repo && cd \$repo && git clone https://github.com/bitmark-inc/bitmarkd.git'
+                 }
+
+                 stage('Install packages') {
+                     echo 'Pulling dependencies'
+                     sh 'cd ${WORKSPACE}/\$repo/bitmarkd && go get -t -d -v ./...'
+                 }
+
+                 stage('Test') {
+                     sh 'cd ${WORKSPACE}/\$repo/bitmarkd && go test -cover -coverprofile=coverage.out $(go list ./... | grep -v /vendor/) || true'
+                     sh "${HOME}/go/bin/gocov convert ${REPO}/bitmarkd/coverage.out  | ~/go/bin/gocov-xml > coverage.xml"
+                     cobertura('coberturaReportFile': 'coverage.xml')
+                 }
+             }
+         }
+     }
+   #+END_SRC

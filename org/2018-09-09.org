@@ -1,0 +1,59 @@
+* Bitmarkd
+** Install go
+
+   [[https://linuxconfig.org/install-go-on-ubuntu-18-04-bionic-beaver-linux][reference]]
+
+   #+BEGIN_SRC shell
+   sudo apt install wget git
+   wget -q https://storage.googleapis.com/golang/getgo/installer_linux
+   chmod +x installer_linux
+   ./installer_linux
+   source ~/.bash_profile
+   mkdir ~/go/src/
+   #+END_SRC
+** Install packages
+
+   argon2 can be found [[https://github.com/P-H-C/phc-winner-argon2][here]]
+
+   #+BEGIN_SRC shell
+     apt install libghc-argon2-dev autoconf libtool pkg-config uuid-dev postgresql postgresql-contrib jq
+   #+END_SRC
+
+** Compile necessray libraries
+*** Libucl
+
+    #+BEGIN_SRC shell
+      git clone https://github.com/vstakhov/libucl.git
+      cd libucl
+      ./autogen.sh
+      ./configure --enable-utils
+      make
+      make install
+    #+END_SRC
+*** Libzmq
+
+    #+BEGIN_SRC shell
+    git clone https://github.com/zeromq/libzmq
+    cd libzmq
+    ./autogen.sh
+    ./configure
+    make
+    make install
+    ldconfig
+    #+END_SRC
+* Updaterd
+** Set postgresql authentication
+
+   #+BEGIN_SRC shell
+   vim /etc/postgresql/10/main/pg_hba.conf
+   #+END_SRC
+
+   change the line of
+   'local   all             all                                  peer' into
+   'local   all             all                                  md5'
+
+   restart service:
+
+   #+BEGIN_SRC shell
+   sudo service postgresql restart
+   #+END_SRC
