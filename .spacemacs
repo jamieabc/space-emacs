@@ -519,6 +519,61 @@ before packages are loaded."
   (if (spacemacs/system-is-mac)
       (setq-default counsel-ag-base-command
                     "/usr/local/bin/ag --vimgrep --nocolor --nogroup %s"))
+
+  ;; org
+  (with-eval-after-load 'org
+    '(progn
+       (
+;;; add <el for emacs-lisp expansion
+        (add-to-list 'org-structure-template-alist
+                     '("el" "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+;;; add <el for emacs-lisp expansion
+
+        ;; add <js for javascript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("js" "#+BEGIN_SRC js\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <js for javascript expansion
+
+        ;; add <ts for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("ts" "#+BEGIN_SRC typescript\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <ts for typescript expansion
+
+        ;; add <sql for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("sql" "#+BEGIN_SRC sql\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <sql for typescript expansion
+
+        ;; add <rb for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("rb" "#+BEGIN_SRC ruby\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <rb for typescript expansion
+
+        ;; add <html for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("html" "#+BEGIN_SRC browser\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <html for typescript expansion
+
+        ;; add <go for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("go" "#+BEGIN_SRC go\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <go for typescript expansion
+
+        ;; add <sh for shell expansion
+        (add-to-list 'org-structure-template-alist
+                     '("sh" "#+BEGIN_SRC shell\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <sh for typescript expansion
+
+        ;; add <http for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("http" "#+BEGIN_SRC http\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <http for typescript expansion
+
+        ;; add <gvy for typescript expansion
+        (add-to-list 'org-structure-template-alist
+                     '("gvy" "#+BEGIN_SRC groovy\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+        ;; add <gvy for typescript expansion
+        )))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
