@@ -6,7 +6,11 @@
     ))
 
 (defun my-org/init-org-beautify-theme ()
-  (use-package org-beautify-theme :defer t))
+  (use-package org-beautify-theme
+    :defer t
+    :init
+    (add-hook 'org-mode-hook (lambda () (auto-fill-mode 1)))
+    ))
 
 (defun my-org/init-org-crypt ()
   (use-package org
