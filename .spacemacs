@@ -522,8 +522,6 @@ before packages are loaded."
 
   ;; org
   (with-eval-after-load 'org
-    '(progn
-       (
 ;;; add <el for emacs-lisp expansion
         (add-to-list 'org-structure-template-alist
                      '("el" "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
@@ -573,7 +571,7 @@ before packages are loaded."
         (add-to-list 'org-structure-template-alist
                      '("gvy" "#+BEGIN_SRC groovy\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
         ;; add <gvy for typescript expansion
-        )))
+        )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
