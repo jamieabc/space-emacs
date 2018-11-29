@@ -45,3 +45,27 @@
   "Copy current file path to clipboard."
   (interactive)
   (my-edit/copy-filename-or-path-to-clipboard t))
+
+(defun my-edit/convert-region-to-i18n ()
+  "Convert region to i18n."
+  (interactive)
+  (kill-ring-save (region-beginning) (region-end))
+  (let* ((str (buffer-substring (region-beginning) (region-end)))
+         (tmp (replace-regexp-in-string "\s" "_" str))
+         (target (downcase tmp)))
+    (delete-region (region-beginning) (region-end))
+    (insert "{{ '")
+    (insert target)
+    (insert "' | translate }}")
+    ))
+
+(defun my-edit/insert-json-item ()
+  "Insert json string."
+  (interactive)
+  (let* ((value (car kill-ring))
+         (key (replace-regexp-in-string "[[:space:]]" "_" (downcase value))))
+         (insert "\"")
+         (insert key)
+         (insert "\": \"")
+         (insert value)
+         (insert "\",")))
