@@ -36,5 +36,5 @@
   )
 
 (defun find-file/init-find-file-in-project ()
-  (use-package find-file-in-project :defer t))
+  (use-package find-file-in-project :defer nil))
 ;;; packages.el ends here
