@@ -513,7 +513,7 @@ before packages are loaded."
   (define-key evil-insert-state-map (kbd "C-\\") 'delete-horizontal-space)
 
   ;; magit
-  (eval-after-load 'magit
+  (with-eval-after-load 'magit
     '(progn
        (define-key magit-log-mode-map (kbd "C-c C-w") 'magit-copy-section-value)
        ))
