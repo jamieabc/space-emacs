@@ -485,6 +485,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq scroll-step 1)
+  ;; smart parenthesis
+  (spacemacs/toggle-smartparens-globally-on)
+
   ;; setup mac keys
   (if (spacemacs/system-is-mac)
        (setq mac-command-modifier 'meta
