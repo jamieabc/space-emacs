@@ -575,6 +575,9 @@ before packages are loaded."
                      '("gvy" "#+BEGIN_SRC groovy\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
         ;; add <gvy for typescript expansion
         )
+
+  ;; find-file
+  (add-hook 'prog-mode-hook 'find-file/setup)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
