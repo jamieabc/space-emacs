@@ -523,6 +523,9 @@ before packages are loaded."
       (setq-default counsel-ag-base-command
                     "/usr/local/bin/ag --vimgrep --nocolor --nogroup %s"))
 
+  ;; multi cursor
+  (global-evil-mc-mode t)
+
   ;; org
   (with-eval-after-load 'org
 ;;; add <el for emacs-lisp expansion
