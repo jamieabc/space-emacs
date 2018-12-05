@@ -2,6 +2,7 @@
   '(
     keyfreq
     reveal-in-osx-finder
+    rufo
     ))
 
 (defun my-edit/init-keyfreq ()
@@ -18,3 +19,7 @@
   "Initialize reveal-in-osx-finder package."
   (use-package reveal-in-osx-finder
                :defer t))
+
+(defun my-edit/init-rufo ()
+  "Initialize rufo."
+  (use-package rufo))

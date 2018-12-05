@@ -156,7 +156,7 @@
 
     ;; regex
     ("uaz" "\\([A-Za-z0-9]+\\)" )
-    ("ubracket" "\\[\\([^]]+?\\)\\]" )
+    ("bracket" "\\[\\([^]]+?\\)\\]" )
     ("ucurly" "“\\([^”]+?\\)”" )
     ("ud" "\\([0-9]+\\)" )
     ("udate" "\\([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\\)" )
@@ -173,3 +173,7 @@
     ))
 (set-default 'abbrev-mode t)
 (setq save-abbrevs nil)
+
+;; rufo
+(setq-default rufo-minor-mode-use-bundler nil)
+(setq-default rufo-minor-mode-executable "rufo")
