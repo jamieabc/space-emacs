@@ -51,7 +51,8 @@ This function should only modify configuration layer settings."
      (ruby :variables
            ruby-enable-enh-ruby-mode t
            ruby-version-manager 'rvm
-           ruby-test-runner 'rspec)
+           ruby-test-runner 'rspec
+           ruby-highlight-debugger-keywords t)
      (javascript :variables
                  tern-command '("node" "~/.nvm/versions/node/v8.11.3/bin/tern")
                  js2-basic-offset 2
