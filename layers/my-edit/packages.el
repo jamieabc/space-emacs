@@ -3,6 +3,7 @@
     keyfreq
     reveal-in-osx-finder
     rufo
+    emr
     ))
 
 (defun my-edit/init-keyfreq ()
@@ -23,3 +24,8 @@
 (defun my-edit/init-rufo ()
   "Initialize rufo."
   (use-package rufo))
+
+(defun my-edit/init-emr ()
+  "Initialize emacs-refactor package."
+  (use-package emr
+               :defer t))
