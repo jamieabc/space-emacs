@@ -551,9 +551,8 @@ before packages are loaded."
 
   ;; magit
   (with-eval-after-load 'magit
-    '(progn
-       (define-key magit-log-mode-map (kbd "C-c C-w") 'magit-copy-section-value)
-       ))
+    (define-key magit-log-mode-map (kbd "C-c C-w") 'magit-copy-section-value)
+    )
 
   ;; ag
   (if (spacemacs/system-is-mac)
