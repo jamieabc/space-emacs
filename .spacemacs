@@ -436,7 +436,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("ag" "rg" "pt" "ack" "grep")
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -523,7 +523,7 @@ before packages are loaded."
   (global-company-mode)
 
   ;; smart parenthesis
-  ;; (spacemacs/toggle-smartparens-globally-on)
+  (spacemacs/toggle-smartparens-globally-on)
 
   ;; setup mac keys
   (if (spacemacs/system-is-mac)
