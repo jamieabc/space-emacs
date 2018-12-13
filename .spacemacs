@@ -46,7 +46,6 @@ This function should only modify configuration layer settings."
          go-format-before-save t
          gofmt-command "goimports"
          go-tab-width 4
-         go-tab-width nil
          go-use-test-args "-race -timeout 10s"
          godoc-at-point-function 'godoc-gogetdoc)
      (ruby :variables
