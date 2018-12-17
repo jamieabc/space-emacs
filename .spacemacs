@@ -512,6 +512,10 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq scroll-step 1)
 
+  ;; display
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
+
   ;; emacs refactor
   (define-key evil-normal-state-map (kbd "SPC f r") 'emr-show-refactor-menu)
 
