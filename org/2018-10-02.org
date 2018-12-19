@@ -35,6 +35,7 @@
     #+BEGIN_SRC shell
       geth --testnet removedb
     #+END_SRC
+    
 *** Get tx info
 
     Install node library
