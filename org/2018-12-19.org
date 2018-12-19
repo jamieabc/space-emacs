@@ -1,0 +1,3 @@
+* Litecoin
+
+  [[https://github.com/litecoin-project/litecoin/blob/master/doc/build-osx.md][Installation reference]]
