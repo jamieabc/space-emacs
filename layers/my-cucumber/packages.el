@@ -5,7 +5,7 @@
   (use-package feature-mode
     :defer t
     :mode (("\\.feature\\'" . feature-mode))
-    :init (progn (setq feature-step-search-path "features/**/*steps.rb"))
+    :init (progn (setq feature-step-search-path "features/**/*.rb"))
     :config
     (progn
       (spacemacs/set-leader-keys-for-major-mode 'feature-mode
