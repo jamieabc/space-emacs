@@ -515,6 +515,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
+  ;; M-x
+  (setq ivy-initial-inputs-alist nil)
   ;; solarized
   (setq theming-modifications
         '((solarized-dark
@@ -574,6 +577,7 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "f s") 'delete-horizontal-space)
   (define-key evil-normal-state-map (kbd "f g") 'counsel-ag)
   (define-key evil-normal-state-map (kbd "C-\\") 'delete-horizontal-space)
+  (define-key evil-normal-state-map (kbd "C-x C-m") 'counsel-M-x)
 
   ;; key bindings insert mode
   (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
