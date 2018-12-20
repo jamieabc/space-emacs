@@ -4,6 +4,7 @@
   '(
     pretty-mode
     solarized-theme
+    mic-paren
     (prettify-utils :location (recipe :fetcher github
                                       :repo "Ilazki/prettify-utils.el"))
 
@@ -26,6 +27,14 @@
 
 (defun display/init-solarized-theme ()
   (use-package solarized-theme))
+
+(defun display/init-mic-paren ()
+  "Customize mic-paren."
+  (use-package mic-paren
+    :config
+    (setq blink-matching-paren nil)
+    (paren-activate)
+    (setq paren-match-face 'mode-line)))
 
 (defun display/init-prettify-utils ()
   (use-package prettify-utils))
