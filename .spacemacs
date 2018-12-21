@@ -501,6 +501,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                                             ("melpa" . "melpa.org/packages/")
                                             ("org" . "orgmode.org/elpa/")
                                             ("gnu" . "elpa.gnu.org/packages/")))
+  ;; magit
+  (setq-default git-magit-status-fullscreen t)
 )
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -522,17 +524,36 @@ before packages are loaded."
   (setq theming-modifications
         '((solarized-dark
            (mode-line :foreground "#e9e2cb" :background "#2075c7" :inverse-video nil)
-           (powerline-active1 :foreground "#e9e2cb" :background "#2075c7" :inverse-video nil)
-           (powerline-active2 :foreground "#e9e2cb" :background "#2075c7" :inverse-video nil)
-           (mode-line-inactive :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
-           (powerline-inactive1 :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
-           (powerline-inactive2 :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
-           (helm-selection :foreground "white" :background "red" :inverse-video nil)
+           (powerline-active1
+            :foreground "#e9e2cb"
+            :background "#2075c7"
+            :inverse-video nil)
+           (powerline-active2
+            :foreground "#e9e2cb"
+            :background "#2075c7"
+            :inverse-video nil)
+           (mode-line-inactive
+            :foreground "#2075c7"
+            :background "#e9e2cb"
+            :inverse-video nil)
+           (powerline-inactive1
+            :foreground "#2075c7"
+            :background "#e9e2cb"
+            :inverse-video nil)
+           (powerline-inactive2
+            :foreground "#2075c7"
+            :background "#e9e2cb"
+            :inverse-video nil)
+           (helm-selection
+            :foreground "white"
+            :background "red"
+            :inverse-video nil)
            (cursor :background "#b58900") )))
   (set-terminal-parameter nil 'background-mode 'dark)
   (set-frame-parameter nil 'background-mode 'dark)
   (spacemacs/load-theme 'solarized-dark)
 
+  ;; scroll
   (setq scroll-step 1)
 
   ;; display
