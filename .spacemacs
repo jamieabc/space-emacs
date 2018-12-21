@@ -114,6 +114,8 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       color-theme-solarized
+                                      vue-mode
+                                      lsp-vue
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -559,6 +561,12 @@ before packages are loaded."
   ;; display
   (set-language-environment "UTF-8")
   (set-default-coding-systems 'utf-8)
+
+  ;; vue
+  (require 'vue-mode)
+  (add-to-list 'vue-mode-hook #'smartparens-mode)
+  (require 'lsp-vue)
+  (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
 
   ;; emacs refactor
   (define-key evil-normal-state-map (kbd "SPC f r") 'emr-show-refactor-menu)
