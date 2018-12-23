@@ -104,6 +104,8 @@ This function should only modify configuration layer settings."
      my-edit
      my-cucumber
      my-vue
+     (osx :variables
+          dired-use-ls-dired nil)
      )
 
    ;; List of additional packages that will be installed without being
