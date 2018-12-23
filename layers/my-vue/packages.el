@@ -1,10 +1,8 @@
 (defconst my-vue-packages
   '(
     ;; add-node-modules-path
-    company-lsp
-    flycheck
     vue-mode
-    (lsp-vue :requires lsp-mode lsp-ui company-lsp)
+    (lsp-vue :requires lsp-mode lsp-ui company-lsp flycheck)
     ))
 
 ;; (defun my-vue/post-init-add-node-modules-path ()
