@@ -117,6 +117,9 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       color-theme-solarized
+                                      lsp-mode
+                                      company-lsp
+                                      lsp-ui
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -483,7 +486,17 @@ It should only modify the values of Spacemacs settings."
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
-   dotspacemacs-pretty-docs nil))
+   dotspacemacs-pretty-docs nil)
+
+  ;; set shell variables
+  ;; (setq exec-path-from-shell-variables '("PATH"
+  ;;                                        "MANPATH"
+  ;;                                        "GOPATH"
+  ;;                                        "GOROOT"
+  ;;                                        "GOBIN"))
+  ;; (dolist (path '("/usr/local/bin" "/Users/Aaron/gocode/bin"))
+  ;;   (add-to-list 'exec-path path))
+  )
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -521,8 +534,17 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; go
+  (setenv "GOPATH" (concat (getenv "HOME") "/gocode"))
+  (setenv "GOROOT" "/usr/local/opt/go/libexec")
+  (setenv "PATH"
+          (concat "/usr/local/bin" ":"
+                  (concat (getenv "GOPATH") "/bin") ":"
+                  (getenv "PATH")))
+
   ;; M-x
   (setq ivy-initial-inputs-alist nil)
+
   ;; solarized
   (setq theming-modifications
         '((solarized-dark
@@ -681,6 +703,9 @@ before packages are loaded."
 
   ;; find-file
   (add-hook 'prog-mode-hook 'find-file/setup)
+
+  ;; go
+  (require 'lsp-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -698,7 +723,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-directory "~/.emacs.d/org/" t)
  '(package-selected-packages
    (quote
-    (vue-mode edit-indirect ssass-mode vue-html-mode lsp-vue yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify wakatime-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spotify spaceline-all-the-icons solarized-theme smex smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm rufo ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reveal-in-osx-finder restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode pretty-mode prettify-utils prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox pandoc-mode ox-pandoc overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain org-beautify-theme open-junk-file ob-http ob-go neotree nameless multi-term move-text mmm-mode minitest mic-paren markdown-toc magit-svn magit-gitflow macrostep lsp-ui lsp-python lsp-javascript-typescript lsp-go lorem-ipsum livid-mode live-py-mode link-hint keyfreq json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra insert-shebang indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make groovy-mode groovy-imports google-translate golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode find-file-in-project fill-column-indicator feature-mode fasd fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help enh-ruby-mode engine-mode emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl define-word dash-at-point cython-mode counsel-spotify counsel-projectile counsel-gtags counsel-dash counsel-css company-web company-tern company-statistics company-shell company-quickhelp company-lua company-lsp company-go company-anaconda column-enforce-mode color-theme-solarized clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ac-ispell))))
+    (osx-trash osx-dictionary launchctl yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify wakatime-mode vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spotify spaceline-all-the-icons solarized-theme smex smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm rufo ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reveal-in-osx-finder restart-emacs request rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode pretty-mode prettify-utils prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox pandoc-mode ox-pandoc overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain org-beautify-theme open-junk-file ob-http ob-go neotree nameless multi-term move-text minitest mic-paren markdown-toc magit-svn magit-gitflow macrostep lsp-vue lsp-ui lsp-python lsp-javascript-typescript lsp-go lorem-ipsum livid-mode live-py-mode link-hint keyfreq json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra insert-shebang indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make groovy-mode groovy-imports google-translate golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-golangci-lint flycheck-bashate flx-ido fish-mode find-file-in-project fill-column-indicator feature-mode fasd fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help enh-ruby-mode engine-mode emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl define-word dash-at-point cython-mode counsel-spotify counsel-projectile counsel-gtags counsel-dash counsel-css company-web company-tern company-statistics company-shell company-quickhelp company-lua company-lsp company-go company-anaconda column-enforce-mode color-theme-solarized clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
