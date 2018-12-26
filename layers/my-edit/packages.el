@@ -1,7 +1,6 @@
 (defconst my-edit-packages
   '(
     keyfreq
-    reveal-in-osx-finder
     rufo
     emr
     ))
@@ -15,11 +14,6 @@
       (keyfreq-mode 1)
       (keyfreq-autosave-mode 1)))
   )
-
-(defun my-edit/init-reveal-in-osx-finder ()
-  "Initialize reveal-in-osx-finder package."
-  (use-package reveal-in-osx-finder
-               :defer t))
 
 (defun my-edit/init-rufo ()
   "Initialize rufo."
