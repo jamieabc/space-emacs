@@ -3,7 +3,6 @@
 (defconst display-packages
   '(
     pretty-mode
-    solarized-theme
     mic-paren
     (prettify-utils :location (recipe :fetcher github
                                       :repo "Ilazki/prettify-utils.el"))
@@ -24,9 +23,6 @@
       (pretty-activate-groups
        '(:greek :sub-and-superscripts :arithmetic-nary))))
   )
-
-(defun display/init-solarized-theme ()
-  (use-package solarized-theme))
 
 (defun display/init-mic-paren ()
   "Customize mic-paren."
