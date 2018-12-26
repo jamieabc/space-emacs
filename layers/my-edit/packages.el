@@ -3,6 +3,7 @@
     keyfreq
     rufo
     emr
+    color-identifiers-mode
     ))
 
 (defun my-edit/init-keyfreq ()
@@ -23,3 +24,11 @@
   "Initialize emacs-refactor package."
   (use-package emr
     :defer t))
+
+(defun my-edit/init-color-identifiers-mode ()
+  "Initialized color-identifiers-mode."
+  (use-package color-identifiers-mode
+    :defer t
+    :config
+    (progn
+      (add-hook 'after-init-hook #'global-color-identifiers-mode))))
