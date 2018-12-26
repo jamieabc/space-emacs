@@ -531,6 +531,12 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; don't move back cursor one position when exiting insert mode
+  (setq evil-move-cursor-back nil)
+
+  ;; color identifiers
+  (global-color-identifiers-mode)
+
   ;; scroll
   (setq scroll-margin 5
         scroll-conservatively 9999

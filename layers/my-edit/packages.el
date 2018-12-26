@@ -22,4 +22,4 @@
 (defun my-edit/init-emr ()
   "Initialize emacs-refactor package."
   (use-package emr
-               :defer t))
+    :defer t))
