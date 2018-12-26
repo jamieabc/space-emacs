@@ -531,6 +531,11 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; scroll
+  (setq scroll-margin 5
+        scroll-conservatively 9999
+        scroll-step 1)
+
   ;; go
   (setenv "GOPATH" (concat (getenv "HOME") "/gocode"))
   (setenv "GOROOT" "/usr/local/opt/go/libexec")
@@ -574,9 +579,6 @@ before packages are loaded."
   (set-terminal-parameter nil 'background-mode 'dark)
   (set-frame-parameter nil 'background-mode 'dark)
   (spacemacs/load-theme 'solarized-dark)
-
-  ;; scroll
-  (setq scroll-step 1)
 
   ;; display
   (set-language-environment "UTF-8")
