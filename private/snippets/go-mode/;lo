@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ;lo
+# key: ;lo
+# --
+fmt.Println("${1:variable}: ", ${1:$(yas/substr yas-text "[^ ]*")})

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : context (situation)
+# key: cont
+# --
+context '${1:situation}' do
+  $0
+end

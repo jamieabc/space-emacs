@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: variable
+# key: ;con
+# --
+${1:variable}: '${1:$(yas/substr yas-text "[^ ]*")}'

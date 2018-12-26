@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import component from '../component'
+# key: imp
+# --
+import ${1:variable} from './${1:$(yas/substr yas-text "[^ ]*")}';

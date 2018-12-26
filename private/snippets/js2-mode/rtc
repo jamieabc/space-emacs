@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: react toggle component
+# key: rtc
+# --
+<ToggleComponent
+  registeredKey="${1:key}"
+  propsForAlternative={${0:props}}
+>
+{false}
+</ToggleComponent>

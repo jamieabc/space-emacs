@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: import react libries
+# key: rim
+# --
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';

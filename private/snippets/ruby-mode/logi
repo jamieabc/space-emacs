@@ -1,0 +1,5 @@
+#name : logger.info " ... "
+#group: general
+# key: logi
+# --
+Rails.logger.info "#{self.class.name} #{__method__} ${Text here...}"

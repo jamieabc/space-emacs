@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ;lo
+# key: ;lo
+# --
+console.log('${1:variable}: ', ${1:$(yas/substr yas-text "[^ ]*")});

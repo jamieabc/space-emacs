@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : class component
+# key: cs
+# --
+class ${1:class} extends ${2: parent} {
+$0
+}

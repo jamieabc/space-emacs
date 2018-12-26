@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : allow
+# key: alo
+# --
+allow(${1:object}).to receive(${0:method})
