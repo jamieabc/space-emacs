@@ -106,6 +106,7 @@ This function should only modify configuration layer settings."
      my-vue
      (osx :variables
           dired-use-ls-dired nil)
+     themes-megapack
      )
 
    ;; List of additional packages that will be installed without being
