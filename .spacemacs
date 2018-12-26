@@ -486,13 +486,13 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil)
 
   ;; set shell variables
-  ;; (setq exec-path-from-shell-variables '("PATH"
-  ;;                                        "MANPATH"
-  ;;                                        "GOPATH"
-  ;;                                        "GOROOT"
-  ;;                                        "GOBIN"))
-  ;; (dolist (path '("/usr/local/bin" "/Users/Aaron/gocode/bin"))
-  ;;   (add-to-list 'exec-path path))
+  (setq exec-path-from-shell-variables '("PATH"
+                                         "MANPATH"
+                                         "GOPATH"
+                                         "GOROOT"
+                                         "GOBIN"))
+  (dolist (path '("/usr/local/bin" "/Users/Aaron/gocode/bin"))
+    (add-to-list 'exec-path path))
   )
 
 (defun dotspacemacs/user-env ()
