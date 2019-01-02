@@ -4,6 +4,7 @@
     rufo
     emr
     color-identifiers-mode
+    solidity-mode
     ))
 
 (defun my-edit/init-keyfreq ()
@@ -32,3 +33,8 @@
     :config
     (progn
       (add-hook 'after-init-hook #'global-color-identifiers-mode))))
+
+(defun my-edit/init-solidity-mode ()
+  "Initialize solidity-mode."
+  (use-package solidity-mode
+      ))
