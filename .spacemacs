@@ -107,6 +107,7 @@ This function should only modify configuration layer settings."
      (osx :variables
           dired-use-ls-dired nil)
      themes-megapack
+     imenu-list
      )
 
    ;; List of additional packages that will be installed without being
