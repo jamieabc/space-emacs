@@ -1,0 +1,20 @@
+* ERC 20 Comparison
+** Issue
+
+   BM - Asset record + issue record + share record
+
+   SC - ERC 20 create
+
+** Transfer
+
+   BM - Grant record
+
+   SC - ERC 20 transfer
+
+** Swap
+
+   BM - swap record
+
+   SC - Still in consideration, current idea is 3 contracts: A, B, and C. When
+   doing swap, contract A and B put tokens into contract C, then contract C do
+   the swap, send both records to contract A and B.
