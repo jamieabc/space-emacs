@@ -99,3 +99,11 @@
    ~geth~ uses leveldb to store values, and merkle trie uses compact way to
    store. In order to count total storage size, modify [[https://github.com/ethereumjs/merkle-patricia-tree/blob/f86961edae43e358d45ce271a46764422c1d8232/src/readStream.js#L16][this file]] for found
    key-value pair.
+
+** Approve
+
+   #+BEGIN_SRC js
+     a = AaronToken.at(contractAddr)
+     a.approve.sendTransaction(addr, size, { from: srcAddr })
+     a.approve.sendTransaction(addr, size)
+   #+END_SRC
