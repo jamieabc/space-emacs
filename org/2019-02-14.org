@@ -1,0 +1,31 @@
+* Hasing
+** Bitmark
+
+   [[https://gist.github.com/jamieabc/e1e973a8b330e4f062e5f3f31939c7b7][reference code for hash]]
+
+   | Type        | spec                  | cost $/s | 1000 H time(s) | cost of exec |
+   |-------------+-----------------------+----------+----------------+--------------|
+   | t2.xlarge   | 8 core 2.3G, 16G mem  |    0.073 |            170 |         12.4 |
+   | c5d.4xlarge | 16 core 3.0G, 32G mem |   0.2863 |             60 |         17.2 |
+
+** Ethereum
+
+   Refer from [[https://f-a.nz/gist/ethereum-gpu-mining-on-aws-ec2-in-2017/][this page]].
+
+   AWS EC2 instance type: ~p3.16xlarge~
+   Date: 2018/1/31
+   GPU: 8x Nvidia Tesla V100 (5,120 CUDA cores)
+   Monthly cost: $ 17,625
+   Monthly revenue: $ 2,009
+   Hash Rate: 724.64 MH / second
+
+** Comparison
+
+    Two algorithms are used for hashing, Bitmark uses memory intensive algorithm
+    and Ethereum uses computation intensive algorithm. In order to compare these
+    two ways, I want to calculate how much cost of time and money for generating
+    1000 hashes.
+
+    |                           | Bitmark | Ethereum |
+    |---------------------------+---------+----------|
+    | cost of 1000 hashes (USD) | 12 ~ 17 | 9.0E10-9 |
