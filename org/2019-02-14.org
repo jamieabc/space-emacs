@@ -3,10 +3,10 @@
 
    [[https://gist.github.com/jamieabc/e1e973a8b330e4f062e5f3f31939c7b7][reference code for hash]]
 
-   | Type        | spec                  | cost $/s | 1000 H time(s) | cost of exec |
-   |-------------+-----------------------+----------+----------------+--------------|
-   | t2.xlarge   | 8 core 2.3G, 16G mem  |    0.073 |            170 |         12.4 |
-   | c5d.4xlarge | 16 core 3.0G, 32G mem |   0.2863 |             60 |         17.2 |
+   | EC2 Type    | Hardware Spec          | Cost USD/s | 1000 H time(s) | Exec Cost |
+   |-------------+------------------------+------------+----------------+-----------|
+   | t2.xlarge   | 8 cores 2.3G, 16G mem  |      0.073 |            170 |      12.4 |
+   | c5d.4xlarge | 16 cores 3.0G, 32G mem |     0.2863 |             60 |      17.2 |
 
 ** Ethereum
 
